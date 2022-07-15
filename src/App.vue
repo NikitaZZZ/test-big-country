@@ -2,7 +2,7 @@
   <div id="app">
     <CreateComment v-model="commentText" :eventClick="createComment"></CreateComment>
 
-    <h3>Страница: {{ pageNumber }}</h3>
+    <h3>Страница: {{ pageNumber === false ? 1 : parseInt(pageNumber) + 1 }}</h3>
     <UserComment v-for="comment in paginatedData" :key="comment.id" :comment="comment" />
 
     <div class="btns-navigation mb-3">
@@ -98,13 +98,13 @@ export default {
       const query = window.location.search.substring(1);
       const params = query.split('&');
 
-      params.forEach((param) => {
-        const pair = param.split('=');
+      for (var i = 0; i < params.length; i++) {
+        let pair = params[i].split('=');
 
         if (pair[0] == variable) {
           return pair[1];
         }
-      });
+      }
 
       return false;
     },
