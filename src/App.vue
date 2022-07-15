@@ -96,14 +96,15 @@ export default {
 
     getQueryVariable(variable) {
       const query = window.location.search.substring(1);
-      const vars = query.split('&');
+      const params = query.split('&');
 
-      for (var i = 0; i < vars.length; i++) {
-        let pair = vars[i].split('=');
+      params.forEach((param) => {
+        const pair = param.split('=');
+
         if (pair[0] == variable) {
           return pair[1];
         }
-      }
+      });
 
       return false;
     },
