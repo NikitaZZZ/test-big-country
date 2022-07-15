@@ -98,7 +98,7 @@ export default {
       const query = window.location.search.substring(1);
       const params = query.split('&');
 
-      for (var i = 0; i < params.length; i++) {
+      for (let i = 0; i < params.length; i++) {
         let pair = params[i].split('=');
 
         if (pair[0] == variable) {
